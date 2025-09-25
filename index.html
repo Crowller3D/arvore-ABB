@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolução da Prova - Estruturas de Dados II</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+        }
+        h2 {
+            font-size: 1.6em;
+            margin-top: 40px;
+        }
+        h3 {
+            font-size: 1.3em;
+            border: none;
+        }
+        strong {
+            color: #c0392b;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .justification {
+            background-color: #ecf0f1;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .correct-answer {
+            font-weight: bold;
+            color: #27ae60;
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* Estilos para a Árvore */
+        .tree-container {
+            text-align: center;
+            margin: 20px 0;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+        .tree ul {
+            padding-top: 20px;
+            position: relative;
+            transition: all 0.5s;
+            display: flex;
+            justify-content: center;
+        }
+        .tree li {
+            float: left;
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            transition: all 0.5s;
+        }
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            border-top: 2px solid #ccc;
+            width: 50%;
+            height: 20px;
+        }
+        .tree li::after {
+            right: auto;
+            left: 50%;
+            border-left: 2px solid #ccc;
+        }
+        .tree li:only-child::after, .tree li:only-child::before {
+            display: none;
+        }
+        .tree li:only-child {
+            padding-top: 0;
+        }
+        .tree li:first-child::before, .tree li:last-child::after {
+            border: 0 none;
+        }
+        .tree li:last-child::before {
+            border-right: 2px solid #ccc;
+            border-radius: 0 5px 0 0;
+        }
+        .tree li:first-child::after {
+            border-radius: 5px 0 0 0;
+        }
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 2px solid #ccc;
+            width: 0;
+            height: 20px;
+        }
+        .tree li span {
+            border: 2px solid #ccc;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.1em;
+            display: inline-block;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            background-color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resolução da Prova - Estruturas de Dados II</h1>
+
+        <section id="q1">
+            <h2>Questão 1: Análise de Complexidade</h2>
+            <h3>a) Qual é a complexidade no pior caso das operações em uma ABB não balanceada?</h3>
+            <p>A complexidade no pior caso é <strong><code>O(n)</code></strong> para busca, inserção e remoção.</p>
+            <div class="justification">
+                <strong>Justificativa:</strong> No pior caso, a árvore torna-se degenerada (semelhante a uma lista encadeada), o que ocorre quando os dados são inseridos em ordem. Com uma altura de <code>h ≈ n</code>, é necessário percorrer quase todos os nós para realizar uma operação.
+            </div>
+
+            <h3>b) E se a árvore for balanceada, qual seria a complexidade?</h3>
+            <p>A complexidade assintótica seria <strong><code>O(log n)</code></strong> para as mesmas operações.</p>
+
+            <h3>c) Por que, na prática, uma ABB balanceada tem um desempenho melhor?</h3>
+            <p>Uma ABB balanceada usa rotações para garantir que sua altura seja sempre logarítmica (<code>h = O(log n)</code>), impedindo a formação de árvores degeneradas. Isso garante um desempenho rápido e previsível, ao contrário da não balanceada, cujo desempenho pode se degradar para linear (<code>O(n)</code>).</p>
+        </section>
+
+        <section id="q2">
+            <h2>Questão 2: Construção e Percurso de ABB</h2>
+            <h3>a) Árvore Binária de Busca resultante da sequência:</h3>
+            <div class="tree-container">
+                <div class="tree">
+                    <ul>
+                        <li>
+                            <span>51</span>
+                            <ul>
+                                <li>
+                                    <span>31</span>
+                                    <ul>
+                                        <li>
+                                            <span>21</span>
+                                            <ul>
+                                                <li><span>11</span></li>
+                                                <li><span>26</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span>41</span>
+                                            <ul>
+                                                <li>
+                                                    <span>36</span>
+                                                    <ul><li><span>38</span></li></ul>
+                                                </li>
+                                                <li><span>46</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>72</span>
+                                    <ul>
+                                        <li>
+                                            <span>61</span>
+                                            <ul>
+                                                <li><span>56</span></li>
+                                                <li><span>66</span></li>
+                                            </ul>
+                                        </li>
+                                        <li><span>82</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>b) Percursos Pré-ordem e Pós-ordem:</h3>
+            <p><strong>Pré-ordem:</strong> <code>51, 31, 21, 11, 26, 41, 36, 38, 46, 72, 61, 56, 66, 82</code></p>
+            <p><strong>Pós-ordem:</strong> <code>11, 26, 21, 38, 36, 46, 41, 31, 56, 66, 61, 82, 72, 51</code></p>
+        </section>
+
+        <section id="q3">
+            <h2>Questão 3: Remoção em ABB</h2>
+            <h3>a) Resultado final da árvore após as remoções de 11, 31 e 72:</h3>
+            <div class="tree-container">
+                <div class="tree">
+                     <ul>
+                        <li>
+                            <span>51</span>
+                            <ul>
+                                <li>
+                                    <span>36</span>
+                                    <ul>
+                                        <li>
+                                            <span>21</span>
+                                            <ul><li><span>26</span></li></ul>
+                                        </li>
+                                        <li>
+                                            <span>41</span>
+                                            <ul><li><span>38</span></li></ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>82</span>
+                                     <ul>
+                                        <li>
+                                            <span>61</span>
+                                            <ul>
+                                                <li><span>56</span></li>
+                                                <li><span>66</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>b) Novo percurso em-ordem da árvore resultante:</h3>
+            <p><code>21, 26, 36, 38, 41, 51, 56, 61, 66, 82</code></p>
+        </section>
+
+        <section id="q6">
+            <h2>Questão 6: Análise de Caminho de Busca</h2>
+            <p>Qual sequência <strong>NÃO</strong> poderia ser a de nós examinados ao procurar por <strong>363</strong>?</p>
+            <p class="correct-answer">Resposta Correta: d) ( ) 925, 202, 911, 240, 912, 245, 363.</p>
+            <div class="justification">
+                <strong>Justificativa:</strong>
+                <ol>
+                    <li>Busca por <strong>363</strong> em <strong>925</strong> -> vai para a esquerda (próximo nó deve ser < 925).</li>
+                    <li>Em <strong>202</strong> -> vai para a direita (próximo nó deve ser > 202).</li>
+                    <li>Em <strong>911</strong> -> vai para a esquerda (próximo nó deve ser < 911).</li>
+                    <li>Em <strong>240</strong> -> vai para a direita (próximo nó deve ser > 240).</li>
+                    <li>Chega em <strong>912</strong>. <strong>VIOLAÇÃO!</strong> O nó atual (912) viola a condição estabelecida no passo 3, pois 912 não é menor que 911. Portanto, este caminho de busca é impossível em uma ABB válida.</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="q4-5-status">
+            <h2>Status: Questões 4 e 5 (AVL)</h2>
+            <p class="justification">A resolução detalhada para as questões 4 e 5, que envolvem a manipulação passo a passo da árvore AVL, é a mais complexa e será fornecida em seguida para garantir a precisão de cada etapa de balanceamento.</p>
+        </section>
+    </div>
+</body>
+</html>
