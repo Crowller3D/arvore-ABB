@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resolução da Prova - Estruturas de Dados II</title>
+    <title>Gabarito da Prova - Estruturas de Dados II</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,6 +36,7 @@
         h3 {
             font-size: 1.3em;
             border: none;
+            color: #34495e;
         }
         strong {
             color: #c0392b;
@@ -60,6 +61,18 @@
             padding: 10px;
             border-radius: 5px;
             display: inline-block;
+        }
+        .question-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            font-family: 'Georgia', serif;
+        }
+        .question-box p, .question-box li {
+            margin: 8px 0;
         }
 
         /* Estilos para a Árvore */
@@ -142,26 +155,39 @@
 </head>
 <body>
     <div class="container">
-        <h1>Resolução da Prova - Estruturas de Dados II</h1>
+        <h1>Gabarito da Prova - Estruturas de Dados II</h1>
 
         <section id="q1">
-            <h2>Questão 1: Análise de Complexidade</h2>
-            <h3>a) Qual é a complexidade no pior caso das operações em uma ABB não balanceada?</h3>
+            <h2>Questão 1 (1.0 ponto)</h2>
+            <div class="question-box">
+                <p>Considerando m o número de nós da árvore, responda às seguintes perguntas:</p>
+                <p><strong>a)</strong> Qual é a complexidade no pior caso das operações de busca, inserção e remoção em uma árvore binária de busca não balanceada? Justifique brevemente.</p>
+                <p><strong>b)</strong> Considerando que a árvore da Questão 1 é balanceada, qual seria a complexidade assintótica para as mesmas operações?</p>
+                <p><strong>c)</strong> Explique por que, na prática, uma ABB balanceada (como uma AVL) tende a ter desempenho melhor do que uma ABB não balanceada.</p>
+            </div>
+            <h3>Respostas:</h3>
+            <h4>a) Complexidade da ABB Não Balanceada</h4>
             <p>A complexidade no pior caso é <strong><code>O(n)</code></strong> para busca, inserção e remoção.</p>
             <div class="justification">
                 <strong>Justificativa:</strong> No pior caso, a árvore torna-se degenerada (semelhante a uma lista encadeada), o que ocorre quando os dados são inseridos em ordem. Com uma altura de <code>h ≈ n</code>, é necessário percorrer quase todos os nós para realizar uma operação.
             </div>
 
-            <h3>b) E se a árvore for balanceada, qual seria a complexidade?</h3>
+            <h4>b) Complexidade da ABB Balanceada</h4>
             <p>A complexidade assintótica seria <strong><code>O(log n)</code></strong> para as mesmas operações.</p>
 
-            <h3>c) Por que, na prática, uma ABB balanceada tem um desempenho melhor?</h3>
+            <h4>c) Vantagem da ABB Balanceada</h4>
             <p>Uma ABB balanceada usa rotações para garantir que sua altura seja sempre logarítmica (<code>h = O(log n)</code>), impedindo a formação de árvores degeneradas. Isso garante um desempenho rápido e previsível, ao contrário da não balanceada, cujo desempenho pode se degradar para linear (<code>O(n)</code>).</p>
         </section>
 
         <section id="q2">
-            <h2>Questão 2: Construção e Percurso de ABB</h2>
-            <h3>a) Árvore Binária de Busca resultante da sequência:</h3>
+            <h2>Questão 2 (1.0 ponto)</h2>
+            <div class="question-box">
+                <p>Considere a seguinte sequência de valores inseridos em uma árvore binária de busca nesta ordem: <code>[51, 31, 21, 26, 11, 41, 36, 38, 46, 72, 61, 56, 66, 82]</code>.</p>
+                <p><strong>a)</strong> Construa a árvore binária de busca resultante.</p>
+                <p><strong>b)</strong> Escreva as sequências de nós visitados para os percursos pré-ordem e pós-ordem.</p>
+            </div>
+            <h3>Respostas:</h3>
+            <h4>a) Árvore Binária de Busca resultante:</h4>
             <div class="tree-container">
                 <div class="tree">
                     <ul>
@@ -209,14 +235,20 @@
                 </div>
             </div>
 
-            <h3>b) Percursos Pré-ordem e Pós-ordem:</h3>
+            <h4>b) Percursos Pré-ordem e Pós-ordem:</h4>
             <p><strong>Pré-ordem:</strong> <code>51, 31, 21, 11, 26, 41, 36, 38, 46, 72, 61, 56, 66, 82</code></p>
             <p><strong>Pós-ordem:</strong> <code>11, 26, 21, 38, 36, 46, 41, 31, 56, 66, 61, 82, 72, 51</code></p>
         </section>
 
         <section id="q3">
-            <h2>Questão 3: Remoção em ABB</h2>
-            <h3>a) Resultado final da árvore após as remoções de 11, 31 e 72:</h3>
+            <h2>Questão 3 (Nomeada como 2 na prova) (1.0 ponto)</h2>
+             <div class="question-box">
+                <p>Com base na árvore construída na Questão 2, remova os nós 11, 31 e 72, nesta ordem, reconstruindo a árvore a cada remoção.</p>
+                <p><strong>a)</strong> Mostre o resultado final da árvore após as duas remoções.</p>
+                <p><strong>b)</strong> Escreva novamente o percurso em-ordem da árvore resultante.</p>
+            </div>
+            <h3>Respostas:</h3>
+            <h4>a) Resultado final da árvore após as remoções:</h4>
             <div class="tree-container">
                 <div class="tree">
                      <ul>
@@ -254,13 +286,23 @@
                 </div>
             </div>
 
-            <h3>b) Novo percurso em-ordem da árvore resultante:</h3>
+            <h4>b) Novo percurso em-ordem:</h4>
             <p><code>21, 26, 36, 38, 41, 51, 56, 61, 66, 82</code></p>
         </section>
 
         <section id="q6">
-            <h2>Questão 6: Análise de Caminho de Busca</h2>
-            <p>Qual sequência <strong>NÃO</strong> poderia ser a de nós examinados ao procurar por <strong>363</strong>?</p>
+            <h2>Questão 6 (1.0 ponto)</h2>
+            <div class="question-box">
+                <p>Suponha que uma Árvore Binária de Busca possui números entre 1 e 1000 e que se quer procurar pelo número 363. Qual sequência abaixo <strong>NÃO</strong> poderia ser a sequência de nós examinados?</p>
+                <ul>
+                    <li>a) ( ) 2, 252, 401, 398, 330, 344, 397, 363.</li>
+                    <li>b) ( ) 924, 220, 911, 244, 898, 258, 362, 363.</li>
+                    <li>c) ( ) 2, 399, 387, 219, 266, 382, 381, 278, 363.</li>
+                    <li>d) ( ) 925, 202, 911, 240, 912, 245, 363.</li>
+                    <li>e) ( ) 935, 278, 347, 621, 350, 392, 358, 363.</li>
+                </ul>
+            </div>
+            <h3>Resposta:</h3>
             <p class="correct-answer">Resposta Correta: d) ( ) 925, 202, 911, 240, 912, 245, 363.</p>
             <div class="justification">
                 <strong>Justificativa:</strong>
@@ -275,8 +317,23 @@
         </section>
         
         <section id="q4-5-status">
-            <h2>Status: Questões 4 e 5 (AVL)</h2>
-            <p class="justification">A resolução detalhada para as questões 4 e 5, que envolvem a manipulação passo a passo da árvore AVL, é a mais complexa e será fornecida em seguida para garantir a precisão de cada etapa de balanceamento.</p>
+            <h2>Questões 4 e 5 (AVL)</h2>
+            <div class="question-box">
+                <p><strong>Questão 4 (2.0 pontos):</strong> Considere que os seguintes valores foram inseridos nesta ordem em uma Árvore AVL inicialmente vazia: <code>[50, 31, 72, 21, 41, 36, 38, 46, 61, 56, 67, 85]</code>.</p>
+                <ul>
+                    <li>a) Construa a árvore AVL após cada inserção, mostrando o fator de balanceamento (FB) de cada nó.</li>
+                    <li>b) Sempre que houver desbalanceamento (|FB| > 1), aplique a rotação apropriada (simples ou dupla) e redesenhe a árvore corrigida.</li>
+                    <li>c) Ao final de todas as inserções, apresente a árvore AVL final e o fator de balanceamento de cada nó.</li>
+                </ul>
+                <hr>
+                <p><strong>Questão 5 (1.0 ponto):</strong> Utilize a árvore AVL final obtida na Questão 4 e remova os nós na seguinte ordem: 41, 72, 50.</p>
+                 <ul>
+                    <li>a) Após cada remoção, recalcule o fator de balanceamento de todos os nós e aplique as rotações necessárias para manter a propriedade AVL.</li>
+                    <li>b) Apresente a árvore resultante ao final de cada remoção.</li>
+                    <li>c) Indique, para cada etapa, quais rotações foram utilizadas.</li>
+                </ul>
+            </div>
+            <p class="justification"><strong>Status:</strong> A resolução detalhada para estas questões, que envolvem a manipulação passo a passo da árvore AVL, será fornecida a seguir para garantir total precisão.</p>
         </section>
     </div>
 </body>
